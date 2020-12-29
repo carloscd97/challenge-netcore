@@ -29,6 +29,7 @@ namespace BcpChallenge
             RegisterSecurity(services);
             RegisterServices(services);
             RegisterRepository(services);
+            services.AddCors();
             services.AddMvc();  
         }
 
@@ -73,7 +74,11 @@ namespace BcpChallenge
             var context = app.ApplicationServices.GetService<ApiContext>();
             AddUsers(context);
             AddCurrencyChange(context);
-            
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials());
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -87,7 +92,7 @@ namespace BcpChallenge
                 IdUser = 1,
                 Username = "cdiaz",
                 Password = "123",
-                FullName = "Carlos Díaz"
+                FullName = "Carlos Dï¿½az"
             };
             context.Users.Add(user);
             context.SaveChanges();
