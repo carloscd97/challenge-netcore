@@ -38,14 +38,9 @@ _http://localhost:8080/api/v1/currency_
 
 ### Hacer cambio de moneda (GET)
 
-_http://localhost:8080/api/v1/currency/change_
+_http://localhost:8080/api/v1/currency/change?Amount=20&IdOriginCurrency=1&IdDestinationCurrency=2_
 
 ```
-{
-    "Amount": 20,
-    "IdOriginCurrency": 1,
-    "IdDestinationCurrency": 4
-}
 ```
 
 ### Actualizar tipo de cambio (POST)
