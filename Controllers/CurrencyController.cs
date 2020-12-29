@@ -27,7 +27,7 @@ namespace BcpChallenge.Controllers
         }
 
         [HttpGet("change")]
-        public IActionResult Change(CurrencyExchangeViewModel currencyExchangeViewModel)
+        public IActionResult Change([FromQuery] CurrencyExchangeViewModel currencyExchangeViewModel)
         {
             var change = _changeService.CurrencyExchange(currencyExchangeViewModel);
             return Ok(change);
